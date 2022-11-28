@@ -4,7 +4,7 @@ This folder contains solutions for the 0x01. Shell, permissions assignment.
 
 ## Tasks
 
-### 0. My name is Betty
+### 0. </u>My name is Betty</u>
 File: [0-iam_betty](https://github.com/Ndunge-Makau/alx-system_engineering-devops/tree/master/0x01-shell_permissions/0-iam_betty)
 
 Create a script that switches the current user to the user betty.
