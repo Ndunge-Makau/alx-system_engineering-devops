@@ -1,0 +1,8 @@
+# SSH client configuration for local SSH client
+
+Host school
+    HostName ubuntu@52.91.178.212
+    User ubuntu
+    PasswordAuthentication no
+    IdentityFile ~/.ssh/school
+	

@@ -38,3 +38,14 @@ Requirements:
 
 File: <b>1-create_ssh_key_pair</b>
 
+
+### 2. Client configuration file
+
+Your machine has an SSH configuration file for the local SSH client, let’s configure it to our needs so that you can connect to a server without typing a password. Share your SSH client configuration in your answer file.
+
+Requirements:
+
+* Your SSH client configuration must be configured to use the private key ~/.ssh/school
+* Your SSH client configuration must be configured to refuse to authenticate using a password
+
+File: <b>2-ssh_config</b>
