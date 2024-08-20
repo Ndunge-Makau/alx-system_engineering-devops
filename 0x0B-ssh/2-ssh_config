@@ -5,4 +5,4 @@ Host school
     User ubuntu
     PasswordAuthentication no
     IdentityFile ~/.ssh/school
-	
+    
