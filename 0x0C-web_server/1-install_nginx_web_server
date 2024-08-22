@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Configures a new Ubuntu machine
+
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install nginx
+sudo echo "Hello World" > index.html
+sudo service nginx restart
