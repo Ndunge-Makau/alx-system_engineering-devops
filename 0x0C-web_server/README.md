@@ -46,3 +46,17 @@ Requirements:
 * You can’t use systemctl for restarting nginx
 
 File: <b>1-install_nginx_web_server</b>
+
+
+### 2. Setup a domain name
+
+Provide the domain name in your answer file.
+
+Requirement:
+
+* provide the domain name only (example: foobar.tech), no subdomain (example: www.foobar.tech)
+* configure your DNS records with an A entry so that your root domain points to your web-01 IP address Warning: the propagation of your records can take time (~1-2 hours)
+* go to your profile and enter your domain in the Project website url field
+
+File: <b>2-setup_a_domain_name</b>
+
