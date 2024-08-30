@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Fixes the issue in the server
 
-echo "ServerName 172.17.0.2" >> /etc/apache2/apache2.config
+echo "ServerName localhost" >> /etc/apache2/apache2.config
 service apache2 start
