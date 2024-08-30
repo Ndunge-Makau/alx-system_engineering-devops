@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 # Fixes the issue in the server
-/etc/init.d/apache2 start
+
+echo "ServerName localhost" >> /etc/apache2/apache2.conf 
+service apache2 start
