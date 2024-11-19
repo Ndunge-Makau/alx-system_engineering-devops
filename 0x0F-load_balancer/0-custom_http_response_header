@@ -10,5 +10,5 @@ sudo sed -i $"/server_name _;/a\\\n$my_redirect" /etc/nginx/sites-available/defa
 echo "Ceci n'est pas une page" | sudo tee /var/www/html/404_page.html
 my_404="\\terror_page 404 /404_page.html;"
 sudo sed -i $"/server_name _;/a\\\n$my_404" /etc/nginx/sites-available/default
-sudo curl -H "X-Served-By: $HOSTNAME"
+sudo sed -i $"/server_name _;/a\\\nadd_header X-Custom-Header $HOSTNAME always;" /etc/nginx/sites-available/default
 sudo service nginx restart
