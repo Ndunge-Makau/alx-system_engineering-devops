@@ -12,22 +12,23 @@ file {'/var/www/html/index.nginx-debian.html':
 file_line {'redirect':
   path    => '/etc/nginx/sites-available/default',
   after   => 'server_name _;'
-  line    => '\\trewrite ^/redirect_me https://www.youtube.com/watch?v=dQw4w9WgXcQ permanent;'
+  line    => '\trewrite ^/redirect_me https://www.youtube.com/watch?v=dQw4w9WgXcQ permanent;'
 }
 
 file_line {'404':
   path    => '/etc/nginx/sites-available/default',
   after   => 'server_name _;'
-  line    => '\\terror_page 404 /404_page.html;'
+  line    => '\terror_page 404 /404_page.html;'
 }
 
 file_line {'add header':
   path    => '/etc/nginx/sites-available/default',
   after   => 'server_name _;'
-  line    => '\\tadd_header X-Served-By ${hostname} always;'
+  line    => '\tadd_header X-Served-By ${HOSTNAME} always;'
 }
 
 service {'nginx':
   ensure  => running,
   enable  => true,
+  subscribe => File['/etc/nginx/sites-available/default'],
 }
