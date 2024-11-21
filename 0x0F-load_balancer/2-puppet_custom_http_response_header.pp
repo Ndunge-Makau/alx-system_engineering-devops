@@ -17,9 +17,11 @@ file { '/var/www/html/index.nginx-debian.html' :
 file_line { 'add header' :
   ensure => present,
   path   => '/etc/nginx/sites-available/default',
-  after  => 'server_name _;',
-  line   => "\tadd_header X-Served-By ${hostname} always;"
+  line   => "	location / {
+  add_header X-Served-By ${hostname};",
+  match  => '^\tlocation / {',
 }
+
 
 service { 'nginx' :
   ensure => running,
