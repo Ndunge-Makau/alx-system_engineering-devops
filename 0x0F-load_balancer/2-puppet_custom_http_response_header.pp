@@ -1,7 +1,7 @@
 # Installs Nginx and connfigures server
 
 exec { 'update':
-  command  => 'sudo apt-get update && sudo apt-get -y upgrade',
+  command  => 'apt-get update && apt-get -y upgrade',
   provider => shell,
 }
 
@@ -38,5 +38,4 @@ file_line { 'add header' :
 service { 'nginx' :
   ensure    => running,
   enable    => true,
-  subscribe => File['/etc/nginx/sites-available/default'],
 }
