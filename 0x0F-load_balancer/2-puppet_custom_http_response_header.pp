@@ -1,19 +1,27 @@
-#puppet advance
+# Installs Nginx and connfigures server
+
 exec { 'update':
-  command  => 'sudo apt-get update',
+  command  => 'sudo apt-get update && sudo apt-get -y upgrade',
   provider => shell,
 }
--> package {'nginx':
-  ensure => present,
+
+package { 'nginx' :
+  ensure => installed,
 }
--> file_line { 'header line':
+
+file { '/var/www/html/index.nginx-debian.html' :
+  ensure  => present,
+  content => 'Hello World!',
+}
+
+file_line { 'add header' :
   ensure => present,
   path   => '/etc/nginx/sites-available/default',
-  line   => "	location / {
-  add_header X-Served-By ${hostname};",
-  match  => '^\tlocation / {',
+  after  => 'server_name _;',
+  line   => "\tadd_header X-Served-By ${hostname} always;"
 }
--> exec { 'restart service':
-  command  => 'sudo service nginx restart',
-  provider => shell,
+
+service { 'nginx' :
+  ensure => running,
+  enable => true,
 }
