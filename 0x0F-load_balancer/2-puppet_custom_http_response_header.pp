@@ -24,7 +24,7 @@ file_line {'404':
 file_line {'add header':
   path    => '/etc/nginx/sites-available/default',
   after   => 'server_name _;'
-  line    => '\\tadd_header X-Served-By 55698-web-02 always;'
+  line    => '\\tadd_header X-Served-By ${HOSTNAME} always;'
 }
 
 service {'nginx':
