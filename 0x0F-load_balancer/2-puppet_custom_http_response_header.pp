@@ -1,34 +1,34 @@
 # Installs Nginx and connfigures server
 
 package {'nginx':
-  ensure  => latest,
+  ensure    => installed,
 }
 
-file {'/var/www/html/index.nginx-debian.html':
+file { '/var/www/html/index.nginx-debian.html' :
   ensure  => present,
-  content => "Hello World!",
+  content => 'Hello World!',
 }
 
-file_line {'redirect':
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'server_name _;'
-  line    => "\trewrite ^/redirect_me https://www.youtube.com/watch?v=dQw4w9WgXcQ permanent;"
+file_line { 'redirect' :
+  path  => '/etc/nginx/sites-available/default',
+  after => 'server_name _;'
+  line  => "\trewrite ^/redirect_me https://www.youtube.com/watch?v=dQw4w9WgXcQ permanent;"
 }
 
-file_line {'404':
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'server_name _;'
-  line    => "\terror_page 404 /404_page.html;"
+file_line { '404' :
+  path  => '/etc/nginx/sites-available/default',
+  after => 'server_name _;'
+  line  => "\terror_page 404 /404_page.html;"
 }
 
-file_line {'add header':
-  path    => '/etc/nginx/sites-available/default',
-  after   => 'server_name _;'
-  line    => "\tadd_header X-Served-By ${hostname} always;"
+file_line { 'add header' :
+  path  => '/etc/nginx/sites-available/default',
+  after => 'server_name _;'
+  line  => "\tadd_header X-Served-By ${hostname} always;"
 }
 
-service {'nginx':
-  ensure  => running,
-  enable  => true,
+service { 'nginx' :
+  ensure    => running,
+  enable    => true,
   subscribe => File['/etc/nginx/sites-available/default'],
 }
