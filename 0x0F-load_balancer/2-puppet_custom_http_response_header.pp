@@ -6,7 +6,7 @@ exec { 'update':
 }
 
 package { 'nginx' :
-  ensure    => installed,
+  ensure => installed,
 }
 
 file { '/var/www/html/index.nginx-debian.html' :
@@ -16,16 +16,16 @@ file { '/var/www/html/index.nginx-debian.html' :
 
 file_line { 'redirect' :
   ensure => present,
-  path  => '/etc/nginx/sites-available/default',
-  after => 'server_name _;'
-  line  => "\trewrite ^/redirect_me https://www.youtube.com/watch?v=dQw4w9WgXcQ permanent;"
+  path   => '/etc/nginx/sites-available/default',
+  after  => 'server_name _;'
+  line   => "\trewrite ^/redirect_me https://www.youtube.com/watch?v=dQw4w9WgXcQ permanent;"
 }
 
 file_line { '404' :
   ensure => present,
-  path  => '/etc/nginx/sites-available/default',
-  after => 'server_name _;'
-  line  => "\terror_page 404 /404_page.html;"
+  path   => '/etc/nginx/sites-available/default',
+  after  => 'server_name _;'
+  line   => "\terror_page 404 /404_page.html;"
 }
 
 file_line { 'add header' :
