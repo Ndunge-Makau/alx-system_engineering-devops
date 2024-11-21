@@ -1,3 +1,5 @@
+# Installs Nginx and connfigures server
+
 package {'nginx':
   ensure  => latest,
 }
