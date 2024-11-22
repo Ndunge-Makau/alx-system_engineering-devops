@@ -5,19 +5,18 @@ exec { 'update':
   provider => shell,
 }
 
-package { 'nginx' :
+-> package { 'nginx' :
   ensure => installed,
 }
 
-file_line { 'add header' :
+-> file_line { 'add header' :
   ensure => present,
   path   => '/etc/nginx/sites-available/default',
   after  => '\tserver_name _;',
-  line   => "	location / {
-  add_header X-Served-By ${hostname};",
+  line   => "\tadd_header X-Served-By ${hostname} always;",
 }
 
-service { 'nginx' :
+-> service { 'nginx' :
   ensure => running,
   enable => true,
 }
