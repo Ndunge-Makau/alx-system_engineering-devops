@@ -1,7 +1,7 @@
 # Installs Nginx and connfigures server
 
 exec { 'update':
-  command  => 'sudo apt-get update && sudo apt-get upgrade',
+  command  => 'sudo apt-get update',
   provider => shell,
 }
 
