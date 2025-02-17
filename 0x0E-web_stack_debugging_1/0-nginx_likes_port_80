@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Configures server to run and listen on port 80 
-# of all the server’s active IPv4 IPs
+# Configures server to run and listen on port 80 of all the server’s active IPv4 IPs
 
 sudo apt update
 sudo apt install -y nginx
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 sudo service nginx restart
